@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
+
+template<typename T>
+// A[p]...A[m-1]  A[m]...A[q-1]
+void merge(T A[], int p, int m, int q){
+  int a = m - p;
+  int b = q - m;
+  int *L = (int *)malloc(sizeof(int)*a);
+  assert( L != NULL);
+  int *R = (int *)malloc(sizeof(int)*b);
+  assert( R != NULL);
+  for(int i = 0; i < a; ++i)
+    L[i] = A[p+i];
+  for(int j = 0; j < b; ++j)
+    R[j] = A[m+j];
+  int k = p, i = 0, j = 0;
+  while((i < a) && (j < b)){
+    if(L[i] <= R[j]) A[k++] = L[i++];
+    else A[k++] = R[j++];
+}
+  while(i < a) A[k++] = L[i++];
+  while(j < b) A[k++] = R[j++];
+  free(L);
+  free(R);
+}
