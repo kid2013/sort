@@ -13,7 +13,7 @@ int partition(T A[], int p, int q){
   int k = q - 1;
   T pivot = A[k];
   for(int j = p; j < k; ++j){
-    if(A[j] <= pivot)
+    if(A[j] < pivot)
       swap(A[++i], A[j]);
     else if( A[j] == pivot){
       swap(A[--k], A[j--]); 
