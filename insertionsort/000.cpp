@@ -4,7 +4,7 @@ template<typename T>
 void Sort(T A[], int n){
   for(int i = 1; i < n; ++i){
     T key = A[i];
-    T j = i - 1;
+    int j = i - 1;
     for(; j >= 0; --j){
       if( A[j] > key) A[j+1] = A[j];
       else break;
